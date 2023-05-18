@@ -1,12 +1,14 @@
 
 import React from 'react';
 import '../styles/PhotoListItem.scss';
+import FavIcon from './FavIcon';
 
-const PhotoListItem = ({ username, imageSource, id, hideUserName }) => {
+const PhotoListItem = (props) => {
   return (
-    <div className="photo-list-item">
-      <img src={imageSource} alt="user" />
-      {!hideUserName && <p>{username}</p>}
+    <div className="photo-list-item" key={props.id}>
+      <FavIcon setLikes={props.setLikes}/>
+      <h2 className='photo-list-user-info'>{props.username}</h2>
+      <img className='photo-list--image' src={props.imageSource} alt="Jacobs image" width={300} />
     </div>
   );
 }
