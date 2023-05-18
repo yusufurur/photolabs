@@ -1,10 +1,14 @@
 
 import React from 'react';
-
 import '../styles/PhotoListItem.scss';
 
-const PhotoListItem = () => {
-  /* Insert React */
+const PhotoListItem = ({ username, imageSource, id, hideUserName }) => {
+  return (
+    <div className="photo-list-item">
+      <img src={imageSource} alt="user" />
+      {!hideUserName && <p>{username}</p>}
+    </div>
+  );
 }
 
 PhotoListItem.defaultProps = {
@@ -14,4 +18,4 @@ PhotoListItem.defaultProps = {
   hideUserName: false,
 }
 
-export default PhotoListItem
+export default PhotoListItem;
