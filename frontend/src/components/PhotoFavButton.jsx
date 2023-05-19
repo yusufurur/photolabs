@@ -3,11 +3,11 @@ import React, { useCallback, useState } from 'react';
 import { FavIcon } from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+function PhotoFavButton(props) {
   return (
     <div className="photo-list--fav-icon">
       <div className="photo-list--fav-icon-svg">
-        {/* Insert React */}
+        <FavIcon setLikes={props.setLikes}/>
       </div>
     </div>
   );
