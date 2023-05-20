@@ -4,17 +4,17 @@ import PhotoList from "./PhotoList";
 
 import "../styles/HomeRoute.scss";
 
-const Home = (props) => {
-  const { topics } = props;
-
+const HomeRoute = (props) => {
+  const { topics, photos } = props;
+  // console.log(">>>>>Home", props);
   const [likes, setLikes] = useState(0);
 
   return (
     <div className="home-route">
       <TopNavigation topics={topics} setLikes={setLikes} />
-      <PhotoList setLikes={setLikes} />
+      <PhotoList photos={photos} />
     </div>
   );
 };
 
-export default Home;
+export default HomeRoute;

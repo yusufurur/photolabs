@@ -1,15 +1,16 @@
-import React from 'react';
+import React from 'react';      
 import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
 const PhotoList = (props) => {
+
   const photoItems = props.photos.map((photo) => {
     return (
       <PhotoListItem
         key={photo.id}
-        photo={photo}
-        imageSource={photo.imageSource}
-        username={photo.username}
+        photo={photo.user.profile}
+        imageSource={photo.urls.regular}
+        username={photo.user.name}
         setLikes={props.setLikes}    
       />
     );
@@ -18,27 +19,27 @@ const PhotoList = (props) => {
   return <ul className="photo-list">{photoItems}</ul>;
 };
 
-PhotoList.defaultProps = {
-  photos: [
-    {
-      username: 'Jacob',
-      imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-      id: 1,
-      hideUserName: false,
-    },
-    {
-      username: 'Jacob',
-      imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-      id: 2,
-      hideUserName: false,
-    },
-    {
-      username: 'Jacob',
-      imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-      id: 3,
-      hideUserName: false,
-    }
-  ]
-};
+// PhotoList.defaultProps = {
+//   photos: [
+//     {
+//       username: 'Jacob',
+//       imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
+//       id: 1,
+//       hideUserName: false,
+//     },
+//     {
+//       username: 'Jacob',
+//       imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
+//       id: 2,
+//       hideUserName: false,
+//     },
+//     {
+//       username: 'Jacob',
+//       imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
+//       id: 3,
+//       hideUserName: false,
+//     }
+//   ]
+// };
 
 export default PhotoList;
