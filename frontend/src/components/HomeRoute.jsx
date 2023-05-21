@@ -11,6 +11,7 @@ const HomeRoute = (props) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const openPhotoDetails = (photo) => {
+    console.log(">>>>>openPhotoDetails", photo);
     setSelectedPhoto(photo);
   };
 

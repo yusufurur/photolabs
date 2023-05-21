@@ -5,10 +5,6 @@ import "../styles/PhotoList.scss";
 const PhotoList = (props) => {
   const { photos, handlePhotoLike, openPhotoDetails } = props;
 
-  // const openPhotoDetails = (photo) => {
-  //   setSelectedPhoto(photo);
-  // };
-
   const photoItems = photos.map((photo) => {
     return (
       <PhotoListItem
