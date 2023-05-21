@@ -6,12 +6,12 @@ import TopicData from "../mocks/topics.json"
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
+  const { topics, photoLike } = props;
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar--logo">PhotoLabs</span>
-      <TopicList topics={props.topics} />
-      <FavIcon likes={props.likes} />
+      <TopicList topics={topics} photoLike={photoLike} />
     </div>
   )
 }

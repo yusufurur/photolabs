@@ -5,11 +5,12 @@ import FavIcon from './FavIcon';
 import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
+  const { handlePhotoLike, id, setLikes, username, imageSource } = props;
   return (
-    <div className="photo-list--item" key={props.id}>
-      <PhotoFavButton setLikes={props.setLikes}/>
-      <h2 className='photo-list-user-info'>{props.username}</h2>
-      <img className='photo-list--image' src={props.imageSource} alt={props.username} width={300} />
+    <div className="photo-list--item" key={id}>
+      <PhotoFavButton setLikes={setLikes} handlePhotoLike={handlePhotoLike} id={id} />
+      <h2 className='photo-list-user-info'>{username}</h2>
+      <img className='photo-list--image' src={imageSource} alt={username} width={300} />
     </div>
   );
 }
