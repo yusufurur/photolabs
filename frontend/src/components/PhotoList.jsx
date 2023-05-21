@@ -1,9 +1,13 @@
-import React from 'react';      
-import PhotoListItem from './PhotoListItem';
-import '../styles/PhotoList.scss';
+import React from "react";
+import PhotoListItem from "./PhotoListItem";
+import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
-  const { photos, handlePhotoLike } = props;
+  const { photos, handlePhotoLike, openPhotoDetails } = props;
+
+  // const openPhotoDetails = (photo) => {
+  //   setSelectedPhoto(photo);
+  // };
 
   const photoItems = photos.map((photo) => {
     return (
@@ -13,12 +17,13 @@ const PhotoList = (props) => {
         photo={photo.user.profile}
         imageSource={photo.urls.regular}
         username={photo.user.name}
-        setLikes={props.setLikes} 
+        setLikes={props.setLikes}
         handlePhotoLike={handlePhotoLike}
+        onClick={() => openPhotoDetails(photo)}
       />
     );
-  }); 
-      
+  });
+
   return <ul className="photo-list">{photoItems}</ul>;
 };
 

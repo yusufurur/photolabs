@@ -20,11 +20,13 @@ const App = () => {
     const newPhotoLike = [...photoLike];
     setPhotoLike([...newPhotoLike, id]);
   };
+
   const photo = new Array(3).fill(0);
 
   return (
     <div className="App">
       <Home photos={photos} topics={topics} photoLike={photoLike} handlePhotoLike={handlePhotoLike} />
+      
     </div>
   );
 };
