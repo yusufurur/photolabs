@@ -1,8 +1,11 @@
 import React from "react";
+import PhotoList from "./PhotoList";
+import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoDetailsModal.scss";
 
 const PhotoDetailsModal = (props) => {
-  const { photo, onClose } = props;
+  console.log(">>>>>PhotoDetailsModal", props);
+  const { photo, onClose, handlePhotoLike, openPhotoDetails, id, setLikes } = props;
 
   const handleClick = () => {
     onClose && onClose();
@@ -23,6 +26,14 @@ const PhotoDetailsModal = (props) => {
           </defs>
         </svg>
       </button>
+      <div>
+      <img className='photo-details-modal--image' src={photo.urls.full} />
+      <PhotoFavButton setLikes={setLikes} handlePhotoLike={handlePhotoLike} id={id} />
+      </div>
+      <div className="photo-details-modal--images">
+      <h1 className="photo-details-modal--header">Similar Photos</h1>
+      {photo.similar_photos && <PhotoList photos={Object.values(photo.similar_photos)} handlePhotoLike={handlePhotoLike} openPhotoDetails={openPhotoDetails}/>}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TopNavigation from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
-import PhotoDetailsModel from "./PhotoDetailsModel";
+import PhotoDetailsModel from "./PhotoDetailsModal";
 
 import "../styles/HomeRoute.scss";
 
@@ -25,7 +25,7 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigation topics={topics} setLikes={setLikes} photoLike={photoLike}/>
       <PhotoList photos={photos} handlePhotoLike={handlePhotoLike} openPhotoDetails={openPhotoDetails}/>
-      {selectedPhoto && <PhotoDetailsModel photo={selectedPhoto} onClose={closePhotoDetails} />}
+      {selectedPhoto && <PhotoDetailsModel photo={selectedPhoto} onClose={closePhotoDetails} setLikes={setLikes} handlePhotoLike={handlePhotoLike} openPhotoDetails={openPhotoDetails} />}
     </div>
   );
 };

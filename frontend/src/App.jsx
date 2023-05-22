@@ -26,7 +26,6 @@ const App = () => {
   return (
     <div className="App">
       <Home photos={photos} topics={topics} photoLike={photoLike} handlePhotoLike={handlePhotoLike} />
-      
     </div>
   );
 };
