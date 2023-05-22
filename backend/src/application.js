@@ -35,8 +35,8 @@ module.exports = function application(
   app.use(bodyparser.json());
 
   // TODO: update to topics and photos
-  app.use("/api", photos());
-  app.use("/api", topics());
+  app.use("/api", photos(db));
+  app.use("/api", topics(db));
 
   if (ENV === "development" || ENV === "test") {
     Promise.all([

@@ -16,7 +16,8 @@ const PhotoList = (props) => {
         username={photo.user.name}
         setLikes={props.setLikes}
         handlePhotoLike={handlePhotoLike}
-        onClick={() => openPhotoDetails(photo)}
+        openPhotoDetails={openPhotoDetails}
+        photoo={photo}
       />
     );
   });

@@ -4,13 +4,12 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoDetailsModal.scss";
 
 const PhotoDetailsModal = (props) => {
-  console.log(">>>>>PhotoDetailsModal", props);
-  const { photo, onClose, handlePhotoLike, openPhotoDetails, id, setLikes } = props;
-
+  
+  const { selectedPhoto, onClose, handlePhotoLike, openPhotoDetails, id, setLikes } = props;
   const handleClick = () => {
     onClose && onClose();
   };
-
+  
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal--close-button" onClick={handleClick}>
@@ -27,12 +26,12 @@ const PhotoDetailsModal = (props) => {
         </svg>
       </button>
       <div>
-      <img className='photo-details-modal--image' src={photo.urls.full} />
-      <PhotoFavButton setLikes={setLikes} handlePhotoLike={handlePhotoLike} id={id} />
+      <PhotoFavButton setLikes={setLikes} handlePhotoLike={handlePhotoLike} id={selectedPhoto.id} />
+      <img className='photo-details-modal--image' src={selectedPhoto.urls.full} />
       </div>
       <div className="photo-details-modal--images">
       <h1 className="photo-details-modal--header">Similar Photos</h1>
-      {photo.similar_photos && <PhotoList photos={Object.values(photo.similar_photos)} handlePhotoLike={handlePhotoLike} openPhotoDetails={openPhotoDetails}/>}
+      {selectedPhoto.similar_photos && <PhotoList photos={Object.values(selectedPhoto.similar_photos)} handlePhotoLike={handlePhotoLike} openPhotoDetails={openPhotoDetails} />}
       </div>
     </div>
   );

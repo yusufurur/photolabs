@@ -1,31 +1,43 @@
 import React from "react";
-import { useState } from "react";
+import useApplicationData from "./hooks/useApplicationData";
 import Home from "./components/HomeRoute";
 import "./App.scss";
 import photos from "./mocks/photos";
 import topics from "./mocks/topics";
+import PhotoDetailsModel from "./components/PhotoDetailsModal";
+
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [likes, setLikes] = useState(0);
-  const [photoLike, setPhotoLike] = useState([]);
+  const { selectedPhoto, setSelectedPhoto } = useApplicationData(); 
+  const { likes, setLikes } = useApplicationData(); 
+  const { photoLike, setPhotoLike } = useApplicationData();
+  
+  const {displayModal, setDisplayModal} = useApplicationData();
 
-  const handlePhotoLike = (id) => {
-    console.log(">>>>>handlePhotoLike", id);
-    if (photoLike.includes(id)) {
-      const newPhotoLike = photoLike.filter((photo) => photo !== id);
-      setPhotoLike(newPhotoLike);
-      return;
-    }
-    const newPhotoLike = [...photoLike];
-    setPhotoLike([...newPhotoLike, id]);
-  };
+  const {openPhotoDetails} = useApplicationData();
 
-  const photo = new Array(3).fill(0);
+  const {closePhotoDetails} = useApplicationData();
 
+  const {handlePhotoLike} = useApplicationData();
+  
   return (
     <div className="App">
-      <Home photos={photos} topics={topics} photoLike={photoLike} handlePhotoLike={handlePhotoLike} />
+      <Home photos={photos}
+        topics={topics}
+        photoLike={photoLike}
+        handlePhotoLike={handlePhotoLike}
+        likes={likes}
+        setLikes={setLikes}
+        openPhotoDetails={openPhotoDetails}
+        />
+      {displayModal && <PhotoDetailsModel
+        onClose={closePhotoDetails}
+        setLikes={setLikes}
+        handlePhotoLike={handlePhotoLike}
+        openPhotoDetails={openPhotoDetails}
+        selectedPhoto={selectedPhoto}
+       />}
     </div>
   );
 };
