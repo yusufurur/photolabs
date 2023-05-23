@@ -10,14 +10,7 @@ import PhotoDetailsModel from "./components/PhotoDetailsModal";
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const { selectedPhoto, setSelectedPhoto, likes, setLikes, photoLike, setPhotoLike, displayModal, setDisplayModal, openPhotoDetails, closePhotoDetails, handlePhotoLike } = useApplicationData(); 
-  // const { likes, setLikes } = useApplicationData(); 
-  // const { photoLike, setPhotoLike } = useApplicationData();
-  // const {displayModal, setDisplayModal} = useApplicationData();
 
-  // const {openPhotoDetails} = useApplicationData();
-  // const {closePhotoDetails} = useApplicationData();
-  // const {handlePhotoLike} = useApplicationData();
-  
   return (
     <div className="App">
       <Home photos={photos}
