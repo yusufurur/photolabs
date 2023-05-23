@@ -39,7 +39,7 @@ const initalState = {
   setPhotoLike: () => {},
   displayModal: false,
   setDisplayModal: () => {},
-}
+};
 
 export default function useApplicationData() {
 
@@ -59,7 +59,7 @@ export default function useApplicationData() {
   const handlePhotoLike = (id) => {
     if (state.photoLike.includes(id)) {
       const newPhotoLike = state.photoLike.filter((photo) => photo !== id);
-      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: newPhotoLike });
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: newPhotoLike});
       return;
     }
     const newPhotoLike = [...state.photoLike, id];
@@ -67,7 +67,7 @@ export default function useApplicationData() {
   };
 
   return {
-    
+
     ...state,
     openPhotoDetails: openPhotoDetails,
     closePhotoDetails: closePhotoDetails,

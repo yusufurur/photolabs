@@ -9,14 +9,14 @@ import PhotoDetailsModel from "./components/PhotoDetailsModal";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const { selectedPhoto, setSelectedPhoto } = useApplicationData(); 
-  const { likes, setLikes } = useApplicationData(); 
-  const { photoLike, setPhotoLike } = useApplicationData();
-  const {displayModal, setDisplayModal} = useApplicationData();
+  const { selectedPhoto, setSelectedPhoto, likes, setLikes, photoLike, setPhotoLike, displayModal, setDisplayModal, openPhotoDetails, closePhotoDetails, handlePhotoLike } = useApplicationData(); 
+  // const { likes, setLikes } = useApplicationData(); 
+  // const { photoLike, setPhotoLike } = useApplicationData();
+  // const {displayModal, setDisplayModal} = useApplicationData();
 
-  const {openPhotoDetails} = useApplicationData();
-  const {closePhotoDetails} = useApplicationData();
-  const {handlePhotoLike} = useApplicationData();
+  // const {openPhotoDetails} = useApplicationData();
+  // const {closePhotoDetails} = useApplicationData();
+  // const {handlePhotoLike} = useApplicationData();
   
   return (
     <div className="App">
@@ -28,13 +28,13 @@ const App = () => {
         setLikes={setLikes}
         openPhotoDetails={openPhotoDetails}
         />
-      {displayModal && <PhotoDetailsModel
+      {displayModal && (<PhotoDetailsModel
         onClose={closePhotoDetails}
         setLikes={setLikes}
         handlePhotoLike={handlePhotoLike}
         openPhotoDetails={openPhotoDetails}
         selectedPhoto={selectedPhoto}
-       />}
+       />)}
     </div>
   );
 };
