@@ -12,13 +12,10 @@ const App = () => {
   const { selectedPhoto, setSelectedPhoto } = useApplicationData(); 
   const { likes, setLikes } = useApplicationData(); 
   const { photoLike, setPhotoLike } = useApplicationData();
-  
   const {displayModal, setDisplayModal} = useApplicationData();
 
   const {openPhotoDetails} = useApplicationData();
-
   const {closePhotoDetails} = useApplicationData();
-
   const {handlePhotoLike} = useApplicationData();
   
   return (
