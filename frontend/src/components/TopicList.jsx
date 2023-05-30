@@ -5,13 +5,15 @@ import '../styles/TopicList.scss';
 
 const TopicList = (props) => {
 
-  const { topics, photoLike } = props;
+  const { topics, photoLike, handleTopicChange } = props;
 
   const topicItems = topics.map((topic) => (
     <TopicListItem
       key={topic.id}
+      id={topic.id}
       label={topic.title}
       link={topic.slug}
+      handleTopicChange={(topicLabel) => handleTopicChange(topicLabel)}
     />
   ));
 

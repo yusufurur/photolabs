@@ -9,6 +9,8 @@ const db = require("./db");
 
 const app = express();
 
+app.use(express.static(path.join(__dirname,'public'))); 
+
 const photos = require("./routes/photos");
 const topics = require("./routes/topics");
 

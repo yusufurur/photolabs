@@ -6,6 +6,7 @@ import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
   const { handlePhotoLike, id, setLikes, username, imageSource, openPhotoDetails, photoo } = props;
+
   return (
     <div className="photo-list--item" key={id} >
       <PhotoFavButton setLikes={setLikes} handlePhotoLike={handlePhotoLike} id={id} />

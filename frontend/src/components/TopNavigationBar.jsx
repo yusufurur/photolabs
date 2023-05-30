@@ -6,12 +6,12 @@ import TopicData from "../mocks/topics.json"
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
-  const { topics, photoLike } = props;
+  const { topics, photoLike, handleTopicLabel } = props;
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar--logo">PhotoLabs</span>
-      <TopicList topics={topics} photoLike={photoLike} />
+      <TopicList topics={topics} photoLike={photoLike} handleTopicChange={(topicLabel) => handleTopicLabel(topicLabel)} />
     </div>
   )
 }

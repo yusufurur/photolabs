@@ -1,44 +1,15 @@
 
-import React, { useState, useEffect, useReducer } from "react";
-
-export const ACTIONS = {
-  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
-  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
-  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
-}
-
-function reducer(state, action) {
-  switch (action.type) {
-    case ACTIONS.SELECT_PHOTO:
-      return { ...state, selectedPhoto: action.payload }
-
-      case ACTIONS.FAV_PHOTO_ADDED:
-      return { ...state, likes: state.likes + 1, photoLike : [...action.payload] }
-
-      case ACTIONS.FAV_PHOTO_REMOVED:
-      return { ...state, likes: state.likes - 1, photoLike : [...action.payload] }
-
-    case ACTIONS.DISPLAY_PHOTO_DETAILS:
-      return { ...state, displayModal: !state.displayModal}
-        default:
-      throw new Error(
-        `Tried to reduce with unsupported action type: ${action.type}`
-      );
-  }
-}
+import React, { useReducer, useEffect } from "react";
+import reducer, {ACTIONS}  from "../reducers/application";
 
 const initalState = {
   selectedPhoto: {},
-  setSelectedPhoto: () => {},
   likes: 0,
-  setLikes: () => {},
   photoLike: [],
-  setPhotoLike: () => {},
   displayModal: false,
-  setDisplayModal: () => {},
+  photos: [],
+  topics: [],
+  topicPhotos: []
 };
 
 export default function useApplicationData() {
@@ -51,6 +22,26 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
     
   };
+  const fetchData = async () => {
+    const photos = fetch('./api/photos')
+    const topics = fetch('./api/topics')
+    const response = await Promise.all([photos, topics]);
+    const photoResponse = await response[0].json();
+    const topicResponse = await response[1].json();
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoResponse});
+    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicResponse});
+  } 
+
+  async function setTopicPhotos (topicId) {
+    const photos = fetch(`/api/topics/photos/${topicId}`)
+    const response = await Promise.all([photos]);
+    const photoResponse = await response[0].json();
+    dispatch({ type: ACTIONS.SET_TOPIC_PHOTO_DATA, payload: photoResponse});
+  } 
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const closePhotoDetails = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
@@ -67,10 +58,10 @@ export default function useApplicationData() {
   };
 
   return {
-
     ...state,
     openPhotoDetails: openPhotoDetails,
     closePhotoDetails: closePhotoDetails,
     handlePhotoLike: handlePhotoLike,
+    setTopicPhotos: setTopicPhotos
   }
 }
