@@ -10,7 +10,6 @@ export const ACTIONS = {
 }
 
 export default function reducer(state, action) {
-  console.log("13 action.payload", action.payload)
   switch (action.type) {
     case ACTIONS.SELECT_PHOTO:
       return { ...state, selectedPhoto: action.payload }
